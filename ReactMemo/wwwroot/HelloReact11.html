@@ -1,0 +1,145 @@
+<!-- https://localhost:7151/HelloReact4.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 11 - 클래스형 컴포넌트</title>
+
+    <!-- bootstrap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- react cdn -->
+    <!-- https://ko.reactjs.org/docs/cdn-links.html -->
+    <!-- https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- babel cdn -->
+    <!-- https://babeljs.io/docs/en/babel-standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        let title = "클래스로 컴포넌트 만들기";
+
+        let seeSharp = {
+            title: "C#",
+            description: "내용 들어오는 곳..."
+        };
+
+        function BookTitle() {
+            return (
+                <div className="row">
+                    <h1>MyBook</h1>
+                </div>
+            );
+        }
+
+        const BookFooter = () => <p>제가 집필한 책 목록입니다.</p>
+
+        const Copyrigth = () => {
+            return (<p>Copyrigth &copy;</p>);
+        };
+
+        const BookCard = ({ title, description, price }) => {
+            return (
+                <div className="container mb-2">
+                    <div className="row">
+                        <div className="col-md-12">
+                            {title}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">
+                            {title}
+                        </div>
+                        <div className="col-md-10">
+                            {description}
+                            <hr />
+                            { price + '원' }
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const BookList = (props) => {
+            return (
+                <>
+                    {
+                        (props.sortOrder === "ASC")
+                    ? 
+                        <>
+                        <BookCard title={seeSharp.title} description={seeSharp.description} price={ 55000 }></BookCard>
+                        <BookCard title="채민이의 자서전1" description="제가 집필한 자서전 입니다.1" price={ 30000 }></BookCard>
+                        </>
+                    :
+                        <>
+                        <BookCard title="채민이의 자서전1" description="제가 집필한 자서전 입니다.1" price={ 30000 }></BookCard>
+                        <BookCard title={seeSharp.title} description={seeSharp.description} price={ 55000 }></BookCard>
+                        </>
+                    }
+                </>
+            );
+        };
+
+        const BookListOther = (props) => {
+            if(props.sortOrder === "ASC") {
+                return (
+                    <>
+                    <BookCard title={seeSharp.title} description={seeSharp.description} price={ 55000 }></BookCard>
+                    <BookCard title="채민이의 자서전1" description="제가 집필한 자서전 입니다.1" price={ 30000 }></BookCard>
+                    </>
+                );
+            } else {
+                return (
+                    <>
+                    <BookCard title="채민이의 자서전1" description="제가 집필한 자서전 입니다.1" price={ 30000 }></BookCard>
+                    <BookCard title={seeSharp.title} description={seeSharp.description} price={ 55000 }></BookCard>
+                    </>
+                );
+            }
+        };
+
+        // 함수형 컴포넌트
+        function BookAppOther() {
+            return (
+                <>
+                    <BookTitle></BookTitle>
+                    <BookList sortOrder="ASC"></BookList>
+                    <BookFooter></BookFooter>
+                    <Copyrigth></Copyrigth>
+                </>
+            );
+        };
+
+        // 클래스형 컴포넌트
+        class BookApp extends React.Component {
+            render() {
+                return (
+                    <>
+                        <BookTitle></BookTitle>
+                        <BookList sortOrder="DASC"></BookList>
+                        <BookFooter></BookFooter>
+                        <Copyrigth></Copyrigth>
+                    </>
+                );
+            }
+        }
+
+        // 함수형을 권장함 (byte를 줄이고 싶다)
+        // 강의는 클래스형을 '선호'함
+
+        ReactDOM.render(
+            <BookApp></BookApp>,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

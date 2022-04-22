@@ -1,0 +1,36 @@
+<!-- https://localhost:7151/HelloReact3.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 3</title>
+
+    <!-- react cdn -->
+    <!-- https://ko.reactjs.org/docs/cdn-links.html -->
+    <!-- https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/javascript">
+        let headerStyle1 = {"style" : {"color" : "blue"}}
+        let headerStyle2 = {"style" : {"color" : "red"}}
+        let headerStyle3 = {"style" : {"color" : "green"}}
+        let divStyle = {"style" : {"border" : "1px solid blue"}}
+
+        ReactDOM.render(
+            React.createElement("div", divStyle, "",
+                React.createElement("h1", headerStyle1, "Hello World!"),
+                React.createElement("h2", headerStyle2, "Hello World!"),
+                React.createElement("h3", headerStyle3, "Hello World!")
+            ),   
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

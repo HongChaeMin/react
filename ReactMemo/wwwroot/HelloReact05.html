@@ -1,0 +1,49 @@
+<!-- https://localhost:7151/HelloReact4.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 5 - JSX</title>
+
+    <!-- bootstrap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- react cdn -->
+    <!-- https://ko.reactjs.org/docs/cdn-links.html -->
+    <!-- https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- babel cdn -->
+    <!-- https://babeljs.io/docs/en/babel-standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            (
+                // 같은 형제 노드가 2개가 있으면 에러남
+                // 여기는 javascript 공간이라서 class 속성을 쓰면 javascript class로 인식하기 때문에 className이라는 attribute를 써주어야함
+                <div className="container mb-2">
+                    <div className="row">
+                        <div className="col-md-2">
+                            C#
+                        </div>
+                        <div className="col-md-10">
+                            내용
+                        </div>
+                    </div>
+                </div>
+                /* <h2>JSX</h2> */
+            ),
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

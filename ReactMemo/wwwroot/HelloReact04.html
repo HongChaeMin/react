@@ -1,0 +1,32 @@
+<!-- https://localhost:7151/HelloReact4.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 4</title>
+
+    <!-- react cdn -->
+    <!-- https://ko.reactjs.org/docs/cdn-links.html -->
+    <!-- https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- babel cdn -->
+    <!-- https://babeljs.io/docs/en/babel-standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // JSX를 사용하여 HTML을 JavaScript로 변환
+        ReactDOM.render(
+            <h1>Hello World!</h1>,   
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

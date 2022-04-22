@@ -1,0 +1,128 @@
+<!-- https://localhost:7151/HelloReact4.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 13 - 컬렉션 형태의 테이터 출력</title>
+
+    <!-- bootstrap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- react cdn -->
+    <!-- https://ko.reactjs.org/docs/cdn-links.html -->
+    <!-- https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- babel cdn -->
+    <!-- https://babeljs.io/docs/en/babel-standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        let title = "컬렉션 형태의 테이터 출력";
+
+        let seeSharp = {
+            title: "C#",
+            description: "내용 들어오는 곳..."
+        };
+
+        function BookTitle() {
+            return (
+                <div className="row">
+                    <h1>MyBook</h1>
+                </div>
+            );
+        }
+
+        const BookFooter = () => <p>제가 집필한 책 목록입니다.</p>
+
+        const Copyrigth = () => {
+            return (<p>Copyrigth &copy;</p>);
+        };
+
+        const BookCard = ({ title, description, price }) => {
+            return (
+                <div className="container mb-2">
+                    <div className="row">
+                        <div className="col-md-12">
+                            {title}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">
+                            {title}
+                        </div>
+                        <div className="col-md-10">
+                            {description}
+                            <hr />
+                            { price + '원' }
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        class BookList extends React.Component {
+            state = {
+                theme: 'white'
+            }
+
+            setWhiteTheme = () => {
+                this.setState({theme: 'white'});
+            }
+
+            setBlueTheme = () => {
+                this.setState({theme: 'blue'});
+            }
+
+            render() {
+                return (
+                    <>
+                        <div>{this.state.theme === "white" ? "white theme" : "blue theme"}</div>
+                        <div>
+                            <button onClick={ this.setBlueTheme }>Blue</button>
+                            <button onClick={ this.setWhiteTheme }>White</button>
+                        </div>
+                        {
+                            this.props.books.map(book => {
+                                return <BookCard key={book.id} title={book.title} description={book.description} price={book.price}></BookCard>
+                            })
+                        }
+                    </>
+                );
+            }
+        };
+
+        const books = [
+            { id: 1, title: "C# 교과서", description: "", price: 55000 },
+            { id: 2, title: "채민이의 자서전1", description: "제가 집필한 자서전 입니다.1", price: 30000 },
+            { id: 32, title: "testTitle", description: "testContent", price: 40000 }
+        ];
+
+        class BookApp extends React.Component {
+            render() {
+                return (
+                    <>
+                        <BookTitle></BookTitle>
+                        <BookList books={books}></BookList>
+                        <BookFooter></BookFooter>
+                        <Copyrigth></Copyrigth>
+                    </>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <BookApp></BookApp>,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>

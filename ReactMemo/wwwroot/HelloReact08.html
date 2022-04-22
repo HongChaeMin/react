@@ -1,0 +1,99 @@
+<!-- https://localhost:7151/HelloReact4.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React 8 - Props</title>
+
+    <!-- bootstrap -->
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- react cdn -->
+    <!-- https://ko.reactjs.org/docs/cdn-links.html -->
+    <!-- https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=ko -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- babel cdn -->
+    <!-- https://babeljs.io/docs/en/babel-standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- 리엑트 개꿀잼!!!! -->
+
+    <script type="text/babel">
+        let title = "JSX 표현식(Expression)";
+
+        let seeSharp = {
+            title: "C#",
+            description: "내용 들어오는 곳..."
+        };
+
+        function BookTitle() {
+            return (
+                <div className="row">
+                    <h1>MyBook</h1>
+                </div>
+            );
+        }
+
+        const BookFooter = () => <p>제가 집필한 책 목록입니다.</p>
+
+        const Copyrigth = () => {
+            return (<p>Copyrigth &copy;</p>);
+        }
+
+        const BookCard = (props) => {
+            console.log(Object.keys(props));
+            return (
+                <div className="container mb-2">
+                    <div className="row">
+                        <div className="col-md-12">
+                            {props.title}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2">
+                            {props.title}
+                        </div>
+                        <div className="col-md-10">
+                            {props.description}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const BookList = () => {
+            return (
+                <>
+                    <BookCard title="채민이의 자서전1" description="제가 집필한 자서전 입니다.1" ></BookCard>
+                    <BookCard title={seeSharp.title} description={seeSharp.description} ></BookCard>
+                </>
+            );
+        };
+
+        function BookApp() {
+            return (
+                <>
+                    <BookTitle></BookTitle>
+                    <BookList></BookList>
+                    <BookFooter></BookFooter>
+                    <Copyrigth></Copyrigth>
+                </>
+            );
+        };
+
+        // 최종 렌더링
+        ReactDOM.render(
+            <BookApp></BookApp>,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+</html>
