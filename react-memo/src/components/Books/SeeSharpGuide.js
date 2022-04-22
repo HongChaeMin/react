@@ -1,9 +1,10 @@
 import React from "react";
+import SeeSharpGuideTitle from "./SeeSharpGuideTitle";
 
 const SeeSharpGuide = () => {
     return (
       <div>
-        <h1>강좌 리스트</h1>
+        <SeeSharpGuideTitle></SeeSharpGuideTitle>
         <ul>
           <li>리액트 소개</li>
           <li>리액트 개발환경구축</li>
