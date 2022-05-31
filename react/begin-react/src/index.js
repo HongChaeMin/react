@@ -15,3 +15,5 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// 결국, 리액트 컴포넌트가 렌더링 될 때에는 렌더링된 결과물이 위 div 내부에 렌더링됨
